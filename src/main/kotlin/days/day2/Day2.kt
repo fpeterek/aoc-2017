@@ -3,6 +3,7 @@ package org.fpeterek.aoc.days.day2
 import org.fpeterek.aoc.Day
 import org.fpeterek.aoc.Result
 import org.fpeterek.aoc.util.divisibleBy
+import org.fpeterek.aoc.util.ordered
 
 
 class Day2(inputFile: String) : Day(inputFile) {
@@ -18,13 +19,10 @@ class Day2(inputFile: String) : Day(inputFile) {
     private fun findDivisibleNumbers(list: List<Long>): Pair<Long, Long> {
         for (i in 0 until list.lastIndex) {
             for (j in (i+1)..list.lastIndex) {
-
-                if (list[i] divisibleBy list[j]) {
-                    return list[i] to list[j]
-                } else if (list[j] divisibleBy list[i]) {
-                    return list[j] to list[i]
+                val (lower, higher) = ordered(list[i], list[j])
+                if (higher divisibleBy lower) {
+                    return higher to lower
                 }
-
             }
         }
 
