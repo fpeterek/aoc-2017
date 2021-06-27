@@ -1,6 +1,7 @@
 package org.fpeterek.aoc
 
 import org.fpeterek.aoc.days.day1.Day1
+import org.fpeterek.aoc.days.day2.Day2
 import org.fpeterek.aoc.util.isOdd
 
 
@@ -10,6 +11,7 @@ fun parseArguments(arg1: String, arg2: String) =
 
 fun getResult(args: Arguments) = when (args.day) {
     1 -> Day1(args.inFile).solve()
+    2 -> Day2(args.inFile).solve()
     else -> throw IllegalArgumentException("Invalid day ${args.day}")
 }
 
